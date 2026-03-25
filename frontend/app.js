@@ -40,6 +40,14 @@ const mockArticles = [
         url: "#",
         published_at: new Date(Date.now() - 22 * 60 * 60 * 1000).toISOString(),
         summary: "Production of NVIDIA's next-generation AI chips has hit a snag, potentially delaying shipments to major cloud providers by several months."
+    },
+    {
+        id: "mc12345",
+        title: "Indian IT Sector sees massive boom in GenAI enterprise adoption",
+        source: "Moneycontrol",
+        url: "https://www.moneycontrol.com/",
+        published_at: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+        summary: "Top tier Indian IT firms report a 400% surge in generative AI proof-of-concepts moving into full scale production frameworks over the last quarter."
     }
 ];
 
@@ -94,6 +102,7 @@ function setupEventListeners() {
             else if(currentFilter === 'benbites') titleEl.textContent = 'Ben Bites';
             else if(currentFilter === 'airundown') titleEl.textContent = 'The AI Rundown';
             else if(currentFilter === 'reddit') titleEl.textContent = 'Reddit Tracker';
+            else if(currentFilter === 'moneycontrol') titleEl.textContent = 'Moneycontrol AI News';
 
             renderArticles();
         });
@@ -151,6 +160,7 @@ function getSourceClass(source) {
     if (source.includes('Ben Bites')) return 'source-benbites';
     if (source.includes('AI Rundown')) return 'source-airundown';
     if (source.includes('Reddit')) return 'source-reddit';
+    if (source.includes('Moneycontrol')) return 'source-moneycontrol';
     return '';
 }
 
@@ -168,6 +178,8 @@ function renderArticles() {
         filtered = articles.filter(a => a.source.includes('AI Rundown'));
     } else if (currentFilter === 'reddit') {
         filtered = articles.filter(a => a.source.includes('Reddit'));
+    } else if (currentFilter === 'moneycontrol') {
+        filtered = articles.filter(a => a.source.includes('Moneycontrol'));
     }
 
     if (filtered.length === 0) {

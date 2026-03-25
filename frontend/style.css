@@ -275,6 +275,7 @@ h1 {
 .source-benbites { color: #facc15; }
 .source-airundown { color: var(--accent-color); } /* Light Green */
 .source-reddit { color: var(--danger); } 
+.source-moneycontrol { color: #3b82f6; } /* Moneycontrol Blue */ 
 
 .publish-time {
     color: var(--text-secondary);

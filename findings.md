@@ -11,6 +11,7 @@
 - Ben Bites (Newsletter)
 - The AI Rundown (Newsletter)
 - Reddit (AI Subreddits, exact targets TBD)
+- Moneycontrol (AI News Category)
 
 ## Additional Design & Logic Constraints
 - **Automation:** The system must run every 24 hours to fetch new data. Ignore if no new articles exist.
