@@ -3,8 +3,6 @@
 ## Global Data Schema
 
 ### `Article` Payload
-This is the core JSON structure representing scraped articles from Ben Bites, The AI Rundown, and Reddit.
-
 ```json
 {
   "articles": [
@@ -22,4 +20,6 @@ This is the core JSON structure representing scraped articles from Ben Bites, Th
 ```
 
 ## Maintenance Log
-(Pending trigger and deployment)
+- **Automation Trigger:** Modal.com serverless cron triggers function `scrape_all_sources()` every 24 hours natively.
+- **Deployment Protocol:** Automatic branch pushes to `main` trigger GitHub Actions. The Action safely spins up Python 3.11, validates `feedparser`, and pushes to Modal securely.
+- **Repo Health Keys:** Requires `MODAL_TOKEN_ID`, `MODAL_TOKEN_SECRET` mapped seamlessly via Repository Secrets.

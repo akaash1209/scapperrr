@@ -1,0 +1,30 @@
+name: Deploy Modal Scraper
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-modal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      # Using Python 3.11 perfectly bypasses the local Python 3.13 typing.Literal crash 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          pip install modal feedparser praw python-dotenv
+          
+      - name: Deploy to Modal Cloud (24h Schedule)
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: |
+          modal deploy tools/cron_scraper.py
